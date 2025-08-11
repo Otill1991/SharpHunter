@@ -37,19 +37,15 @@ namespace SharpHunter
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
+            if (args.Length == 0)
+            {
+                args = new string[] { "chrome", "-zip" };
+            }
+
             var commandParsedArgs = CommandLineParser.Parse(args);
 
             CommonUtils.Banner();
-
-
             RegistrationCommands();
-
-            if (args.Length == 0)
-            {
-                Logger.WriteLine("\n[-] No command provided. Please try again.");
-                CommonUtils.DisplayHelp();
-                return;
-            }
 
             try
             {
